@@ -23,11 +23,17 @@ def parcours(list):
 
         for index in listLeft:
             travelTime = abs(float(index - snowplowIndex))
-            totalLeft += float(1/travelTime)
+            if (travelTime == 0):
+                totalLeft += 99999999
+            else:
+                totalLeft += float(1/travelTime)
 
         for index in listRight:
             travelTime = abs(float(index - snowplowIndex))
-            totalRight += float(1/travelTime)
+            if (travelTime == 0):
+                totalRight += 99999999
+            else :
+                totalRight += float(1/travelTime)
 
         if (totalLeft > totalRight):
             RelevantList.append(listLeft[-1])
@@ -38,14 +44,3 @@ def parcours(list):
             snowplowIndex = listRight[0]
             listRight.pop(0)
     return (RelevantList)
-
-
-def main ():
-    list =  np.random.normal(0,10,10).tolist()
-    #list = [-8, -4, -1, -1, 5, 5, 5, 5, 5, 5]
-    print (list)
-    Relevantlist = parcours (list)
-    print (Relevantlist)
-    return (0)
-
-main()
